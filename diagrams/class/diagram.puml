@@ -15,6 +15,9 @@ class Person {
     -lastName : String
     -email : String
     -hashedPassword : String
+    +getFirstName() : String
+    +getLastName() : String
+    +getEmail() : String
 }
 
 class User {
@@ -43,9 +46,30 @@ class Station {
     -humiditySensor : Sensor
     -altitudeSensor : Sensor
     -observers : Observer[]
+    -state : State
     +attachObserver(Observer) : void
     +detachObserver(Observer) : void
-    +notifyObservers() : void
+    -notifyObservers() : void
+    +getState() : State
+    +setState() : State
+}
+
+interface State <<interface>> {
+    +notifyUsers() : void
+    +enable() : void
+    +disable() : void
+}
+
+class EnabledState {
+    +notifyUsers() : void
+    +enable() : void
+    +disable() : void
+}
+
+class DisabledState {
+    +notifyUsers() : void
+    +enable() : void
+    +disable() : void
 }
 
 User --|> Person
@@ -54,11 +78,16 @@ Admin --|> Person
 Station o-- Sensor
 
 Publisher <|-- Station
-Observer <|-- User
+Observer <|--- User
 
-Observer <--o Publisher
+Observer <-o Publisher
 
 Station <-- User
 Station <-- Admin
+
+State <|-- EnabledState
+State <|-- DisabledState
+
+Station o-> State
 
 @enduml
