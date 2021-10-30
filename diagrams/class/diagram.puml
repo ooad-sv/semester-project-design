@@ -1,0 +1,64 @@
+@startuml
+
+
+interface Publisher <<interface>> {
+    +attachObserver(Observer) : void
+    +detachObserver(Observer) : void
+    +notify() : void
+}
+
+interface Observer <<interface>> {
+}
+
+class Person {
+    -firstName : String
+    -lastName : String
+    -email : String
+    -hashedPassword : String
+}
+
+class User {
+    -comfortableRanges : Double[][]
+    -subscribeToStation(Station) : void
+    -unsubscribeFromStation(Station) : void
+    -updateComfortableRanges(Double[][]) : void
+}
+
+class Admin {
+    -enableStation(Station) : boolean
+    -disableStation(Station) : boolean
+}
+
+class Sensor {
+    -type : String
+    -value : Double
+    +getType() : String
+    +getValue() : Double
+    -updateValue(Double) : void
+}
+
+class Station {
+    -temperatureSensor : Sensor
+    -pressureSensor : Sensor
+    -humiditySensor : Sensor
+    -altitudeSensor : Sensor
+    -observers : Observer[]
+    +attachObserver(Observer) : void
+    +detachObserver(Observer) : void
+    +notifyObservers() : void
+}
+
+User --|> Person
+Admin --|> Person
+
+Station o-- Sensor
+
+Publisher <|-- Station
+Observer <|-- User
+
+Observer <--o Publisher
+
+Station <-- User
+Station <-- Admin
+
+@enduml
