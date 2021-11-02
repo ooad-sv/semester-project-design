@@ -21,10 +21,17 @@ class Person {
 }
 
 class User {
-    -comfortableRanges : Double[][]
+    -intervalNotificationsEnabled : boolean
+    -timeInterval : string
+    -alarmNotificationsEnabled : boolean
+    -alarmRanges : Double[][]
+    +getIntervalNotificationsEnabled() : boolean
+    +getTimeInterval() : string
+    +getAlarmNotificationsEnabled() : boolean
+    +getAlarmRanges() : Double[][]
+    -updateAlarmRanges(Double[][]) : void
     -subscribeToStation(Station) : void
     -unsubscribeFromStation(Station) : void
-    -updateComfortableRanges(Double[][]) : void
 }
 
 class Admin {
@@ -49,25 +56,29 @@ class Station {
     -state : State
     +attachObserver(Observer) : void
     +detachObserver(Observer) : void
-    -notifyObservers() : void
+    -intervalNotify() : void
+    -alarmNotify() : void
     +getState() : State
     +setState() : State
 }
 
 interface State <<interface>> {
-    +notifyUsers() : void
+    +intervalNotify() : void
+    +alarmNotify() : void
     +enable() : void
     +disable() : void
 }
 
 class EnabledState {
-    +notifyUsers() : void
+    +intervalNotify() : void
+    +alarmNotify() : void
     +enable() : void
     +disable() : void
 }
 
 class DisabledState {
-    +notifyUsers() : void
+    +intervalNotify() : void
+    +alarmNotify() : void
     +enable() : void
     +disable() : void
 }

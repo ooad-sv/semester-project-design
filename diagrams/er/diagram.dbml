@@ -1,0 +1,35 @@
+
+Table Person {
+    id integer [pk, not null, increment]
+    firstName varchar
+    lastName varchar
+    email varchar [unique]
+    hashedPassword varchar
+    isAdmin boolean
+    intervalNotificationsEnabled boolean
+    timeInterval string
+    alarmNotificationsEnabled boolean
+    minTemperature double
+    maxTemperature double
+    minPressure double
+    maxPressure double
+    minHumidity double
+    maxHumidity double
+    minAltitude double
+    maxAltitude double
+  }
+
+  Table WeatherStation {
+    id integer [pk, not null, increment]
+    enabledState boolean
+    temperature double
+    pressure double
+    humidity double
+    altitude double
+  }
+
+  Table Subscription {
+    id integer [pk, not null, increment]
+    weatherStationId integer [ref: > WeatherStation.id]
+    personId integer [ref: > Person.id]
+  }
