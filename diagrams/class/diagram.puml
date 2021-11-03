@@ -101,4 +101,86 @@ State <|-- DisabledState
 
 Station o-> State
 
+
+
+class DBConnectionPool {
+    +getInstance() : DBConnectionPool
+    +acquireReusable() : ReusableConnection
+    +releaseReusable(ReusableConnection) : void
+}
+
+WebServer ..> ReusableConnection
+DBConnectionPool - WebServer
+ReusableConnection --o DBConnectionPool
+
+
+
+class Model {
+    +attach(View) : void
+    +detach(View) : void
+    +notify()
+}
+
+class View {
+    +update() : void
+    +contextInterface() : void
+}
+
+class Controller {
+    +algorithmInterface() : void
+}
+
+class UserModel {
+    -userState : User
+    +getState() : User
+    +setState(User) : void
+}
+
+class UserView {
+    +update() : void
+}
+
+class UserController {
+    +algorithmInterface() : void
+}
+
+Model -> View
+View o-> Controller
+Model <|--- UserModel
+View <|-- UserView
+Controller <|--- UserController
+UserView --> UserModel
+UserModel <- UserController
+
+
+
+abstract class HTMLComponent <<abstract>> {
+    -text : String
+    +getText() : String
+    +setText(String) : void
+    +addComponent(Component) : void
+    +removeComponent(Component) : void
+    +getChild(int) : Component
+}
+
+class HTMLLeaf {
+    +getText() : String
+    +setText(String) : void
+}
+
+class HTMLComposite {
+    +getText() : String
+    +setText(String) : void
+    +addComponent(Component) : void
+    +removeComponent(Component) : void
+    +getChild(int) : Component
+}
+
+Client -> HTMLComponent
+HTMLComponent <|-- HTMLLeaf
+HTMLComponent <|-- HTMLComposite
+HTMLComponent <-- HTMLComposite
+
+
+
 @enduml

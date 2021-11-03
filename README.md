@@ -30,3 +30,9 @@
 * User Interactions- 3 Sequence Diagrams- Vimal- Registration, Notification, Subscribe
 * Class Diagram- 1 or 2 Class Diagrams (RPi and Server)- Sagar  
   ![Class Diagram](https://github.com/ooad-sv/semester-project-design/blob/main/diagrams/class/diagram.png)
+  * Patterns:
+    * Observer- user and station
+    * State- Station enabled/disabled
+    * Object Pool- DB connections
+    * MVC- Everything tied together
+    * Composite- HTML DOM
