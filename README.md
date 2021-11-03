@@ -28,7 +28,7 @@
   ![ER Diagram](https://github.com/ooad-sv/semester-project-design/blob/main/diagrams/er/diagram.png)
 * UI Mockups/Sketches- Vimal- Login, Registration, User Dashboard, Admin Dashboard, User profile, User update
 * User Interactions- 3 Sequence Diagrams- Vimal- Registration, Notification, Subscribe
-* Class Diagram- 1 or 2 Class Diagrams (RPi and Server)- Sagar  
+* Class Diagram- Sagar  
   ![Class Diagram](https://github.com/ooad-sv/semester-project-design/blob/main/diagrams/class/diagram.png)
   * Patterns:
     * Observer- user and station
