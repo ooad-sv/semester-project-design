@@ -18,5 +18,6 @@ if(Enable regular interval notifications?) then (Yes)
     floating note left: Interval Notify use case enabled
 else (No)
 endif
+:Click Submit;
 stop
 @enduml
