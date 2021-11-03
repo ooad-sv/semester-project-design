@@ -28,6 +28,28 @@
   ![ER Diagram](https://github.com/ooad-sv/semester-project-design/blob/main/diagrams/er/diagram.png)
 * UI Mockups/Sketches- Vimal- Login, Registration, User Dashboard, Admin Dashboard, User profile, User update
 * User Interactions- 3 Sequence Diagrams- Vimal- Registration, Notification, Subscribe
+  * Registration
+    * User -> WebServer : Enter all registration details
+    * Webserver -> Database : Check user with email
+    * Database -> Webserver : yes/no
+    * Webserver -> User : User with email already exits/continue
+    * Webserver -> Database : Create user
+    * Webserver -> Database : Update user station subscriptions
+    * Webserver -> Database : Update user notification preferences
+    * Webserver -> User : Created user
+  * Alarm Notification
+    * Sensor -> Station : Updated value
+    * Station -> WebServer : Updated value
+    * WebServer -> Database : Updated value
+    * WebServer -> Database : Get subscribed users
+    * -> return data
+    * WebServer -> Database : Get user alarm ranges
+    * -> return data
+    * WebServer -> User : Notify
+  * Update subscriptions
+    * User -> WebServer : Updated subscription preferences
+    * WebServer -> Database : Update user station subscriptions
+    * -> return Updated!
 * Class Diagram- Sagar  
   ![Class Diagram](https://github.com/ooad-sv/semester-project-design/blob/main/diagrams/class/diagram.png)
   * Patterns:
