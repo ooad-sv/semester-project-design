@@ -24,6 +24,7 @@
   ![Use Case Diagram](https://github.com/ooad-sv/semester-project-design/blob/main/diagrams/use-case/diagram.png)
 * Activity or State Diagram- Activity- Vimal- Registration
 * Architecture Diagram- Sagar
+  ![Architecture Diagram](https://github.com/ooad-sv/semester-project-design/blob/main/diagrams/architecture/diagram.png)
 * Data Storage- ER Diagram- Sagar  
   ![ER Diagram](https://github.com/ooad-sv/semester-project-design/blob/main/diagrams/er/diagram.png)
 * UI Mockups/Sketches- Vimal- Login, Registration, User Dashboard, Admin Dashboard, User profile, User update
