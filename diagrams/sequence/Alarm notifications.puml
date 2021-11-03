@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+title Alarm Notifications
+actor User
+participant WebServer
+participant Station
+participant Sensor
+participant Database
+Sensor -> Station: Update value
+activate Station
+Station-> WebServer: Update value
+deactivate Station
+activate WebServer
+WebServer -> Database: Update Value
+activate Database
+WebServer -> Database: Get subscribed users
+Database--> WebServer: Return subscribed users
+WebServer -> Database: Get user alarm ranges
+Database--> WebServer: Return user alarm ranges
+deactivate Database
+alt#Gold #LightBlue Sensor value in alarm range
+    WebServer -> User: Send Notification
+    deactivate WebServer
+else #LightGreen Sensor value in safe range
+end
+
+
+@enduml
