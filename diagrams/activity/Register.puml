@@ -1,0 +1,22 @@
+@startuml
+title Local Weather Station - User registration
+start
+floating note left: Registration use case being described
+-> User on the login page;
+: Click Register;
+->Goes to the registration menu;
+:Enter personal details (name, email, password);
+:Subscribe to station/s;
+floating note left: Subscribe use case
+if(Enable alarm notifications?) then (Yes)
+floating note left: Alarm Notify use case enabled
+    : Enter acceptable ranges for temperature, pressure, humidity, altitude;
+else (No)
+endif
+if(Enable regular interval notifications?) then (Yes)
+    : Enter time interval;
+    floating note left: Interval Notify use case enabled
+else (No)
+endif
+stop
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+title Local Weather Station - User registration
+autonumber
+actor user
+participant Person
+participant User
+participant Station
+user -> Person : Enter name, email, password
+activate user
+user -> Station: Subscribe to station
+activate Station
+User -> Station: Attaches as an observer
+deactivate Station
+activate User
+alt#Gold #LightBlue Alarm Notifications enabled
+    user -> User: Enter acceptable ranges for temperature, humidity, altitude, pressure
+end
+alt#Gold #LightBlue Interval Notifications enabled
+    user -> User: Enter time interval between notifications
+end
+deactivate User
+@enduml
