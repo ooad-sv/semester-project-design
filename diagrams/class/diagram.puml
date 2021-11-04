@@ -56,6 +56,7 @@ class Station {
     -state : State
     +attachObserver(Observer) : void
     +detachObserver(Observer) : void
+    -notify() : void
     -intervalNotify() : void
     -alarmNotify() : void
     +getState() : State
