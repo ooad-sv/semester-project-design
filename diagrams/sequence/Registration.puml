@@ -1,6 +1,6 @@
 @startuml
 'https://plantuml.com/sequence-diagram
-title Local Weather Station - User registration
+title User Registration
 autonumber
 actor User
 participant WebServer
@@ -9,19 +9,19 @@ participant Database
 User -> WebServer: Enter all registration details
 activate User
 activate WebServer
-WebServer -> Database: Check the entered email
-alt#Gold #LightBlue Email already exists
-    WebServer -> User: Email already exists
-else #LightGreen Email not in the database
-    WebServer -> User: Email valid
-    deactivate User
-end
-WebServer -> Database: Create user
+WebServer -> Database: Check the entered email in database
 activate Database
+alt#Gold #LightBlue Email already exists
+    Database -> WebServer: Email already exists
+    WebServer -> User: Email already exists!
+else #LightGreen Email does not exist
+    Database -> WebServer: Email does not exist
+WebServer -> Database: Create user
 WebServer -> Database: Update user station subscriptions
 WebServer -> Database: Update user notification preferences
 deactivate Database
+WebServer -> User: User registered
 deactivate WebServer
-WebServer -> User: Account created
 deactivate User
+end
 @enduml

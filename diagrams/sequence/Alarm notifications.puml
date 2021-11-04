@@ -13,7 +13,7 @@ activate Station
 Station-> WebServer: Update value
 deactivate Station
 activate WebServer
-WebServer -> Database: Update Value
+WebServer -> Database: Update value
 activate Database
 WebServer -> Database: Get subscribed users
 Database--> WebServer: Return subscribed users

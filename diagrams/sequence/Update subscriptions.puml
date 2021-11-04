@@ -6,11 +6,13 @@ title Update Subscriptions
 actor User
 participant WebServer
 participant Database
-User -> WebServer: Enter Login details
+User -> WebServer: Enter Login credentials
+activate User
 activate WebServer
-WebServer -> Database: Check matching user
+WebServer -> Database: Find user with credentials
 activate Database
 Database -> WebServer: Return user
+WebServer -> User : Logged in
 deactivate Database
 deactivate WebServer
 User -> WebServer: Update station subscriptions

@@ -2,6 +2,9 @@
 
 ## Deliverables
 * Project Summary- Vimal
+  * Title: Weather Monitoring System
+  * Team: Sagar Pathare and Vimal Kakaraparthi
+  * Overview: TODO
 * Requirements- Sagar
   * 2 types of notifications
     * Regular interval updates
