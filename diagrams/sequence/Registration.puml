@@ -2,22 +2,26 @@
 'https://plantuml.com/sequence-diagram
 title Local Weather Station - User registration
 autonumber
-actor user
-participant Person
-participant User
-participant Station
-user -> Person : Enter name, email, password
-activate user
-user -> Station: Subscribe to station
-activate Station
-User -> Station: Attaches as an observer
-deactivate Station
+actor User
+participant WebServer
+participant Database
+
+User -> WebServer: Enter all registration details
 activate User
-alt#Gold #LightBlue Alarm Notifications enabled
-    user -> User: Enter acceptable ranges for temperature, humidity, altitude, pressure
+activate WebServer
+WebServer -> Database: Check the entered email
+alt#Gold #LightBlue Email already exists
+    WebServer -> User: Email already exists
+else #LightGreen Email not in the database
+    WebServer -> User: Email valid
+    deactivate User
 end
-alt#Gold #LightBlue Interval Notifications enabled
-    user -> User: Enter time interval between notifications
-end
+WebServer -> Database: Create user
+activate Database
+WebServer -> Database: Update user station subscriptions
+WebServer -> Database: Update user notification preferences
+deactivate Database
+deactivate WebServer
+WebServer -> User: Account created
 deactivate User
 @enduml

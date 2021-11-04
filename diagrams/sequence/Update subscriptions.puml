@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+title Update Subscriptions
+actor User
+participant WebServer
+participant Database
+User -> WebServer: Enter Login details
+activate WebServer
+WebServer -> Database: Check matching user
+activate Database
+Database -> WebServer: Return user
+deactivate Database
+deactivate WebServer
+User -> WebServer: Update station subscriptions
+activate WebServer
+WebServer -> Database: Add or remove stations
+WebServer -> User: Updated!
+deactivate WebServer
+@enduml
