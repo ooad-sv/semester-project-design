@@ -6,23 +6,52 @@
   * Team: Sagar Pathare and Vimal Kakaraparthi
   * Overview: TODO
 * Requirements- Sagar
-  * 2 types of notifications
-    * Regular interval updates
-    * Uncomfortable value updates
-  * Registration inputs
-    * Basic info
-      * First name
-      * last name
-      * email
-      * password
-    * Manage subscription
-      * weather station subscriptions
-    * Manage notifications
-      * notification preference for regular interval updates- yes/no
-      * regular interval- like 2h, 6h, etc.
-      * notification preference for uncomfortable value updates- yes/no
-      * comfortable ranges- 8 inputs- min/max for all 4
-  * User update profile- everything can be updated except email
+  * Functional requirements
+    * System
+      * We propose a Weather Monitoring System which monitors the weather at multiple locations and sends notifications about weather to the users.
+      * The system will consist of weather stations based on Raspberry Pi and a web server that manages the stations and sends the notifications.
+      * Each weather station will measure temperature, pressure, humidity, and altitude values using multiple sensors connected to the Raspberry Pi.
+      * These values are hereafter referred to as 'weather values' and will be sent to the web server, which will update them in the database and notify users as required. Users can also view these values from their dashboard.
+      * A web UI will be provided for the end users.  
+    * Notifications
+      * There are two types of notifications sent by the system- Interval notifications and Alarm notifications
+      * User can enable or disable each type of notification he wants to receive.
+      * Interval notifications are sent to the users in fixed time intervals, like every 4 or 6 hours. This interval is accepted as user input during registration and can be updated at any point.
+      * Alarm notifications are sent to the users when the weather station values are in the alarm ranges. Minimum and maximum values for the weather values are accepted from the user during registration and can be updated at any point.
+      * Notifications will be sent to the user via email to the email address he used during the registration. We will use a third-party email service to achieve this.
+    * End Users
+      * There are two types of end-users- Admin and User.
+      * Admin will be responsible for managing the state of the weather stations. He can enable or disable them. There will be only one admin in the system.
+      * User can register using the web UI. User will provide the following information during registration-
+        * Name
+        * Email
+        * Password
+        * Weather stations he wants to subscribe to
+        * Enable interval notifications? If yes, time interval
+        * Enable alarm notifications? If yes, minimum and maximum values for the weather values
+      * User can subscribe to zero to many weather stations.
+      * User can see the list of the weather stations he's subscribed to on his dashboard after login, along with their weather values.
+      * User can update his profile data, subscription, and notification preferences at any point except for email.
+  * Interface requirements
+    * A web UI will be provided for the end users.
+    * Hardware requirements
+      * We're implementing the weather station using a Raspberry Pi 4
+      * Sensor X to measure temperature
+      * Sensor Y to measure humidity
+      * Sensor Z to measure pressure and altitude
+    * Software requirements
+      * Node.js with Express.js for the web server
+      * PostgreSQL for the database
+      * Third-party service like Gmail or Yandex for the email notifications 
+  * Non-functional requirements
+    * Scalability
+      * More weather sensors to measure wind speed, rainfall, etc., can be added to each weather station if needed.
+      * Currently, we plan to have 4 weather stations in the system for this project, and so the system is not designed to handle a large number of weather stations with a large number of users subscribed to them. However, the system can be made scalable using more advanced technologies.
+    * Security
+      * We plan to implement basic user authentication using email and password. A sophisticated authentication system can be implemented if needed, but it's beyond this project's scope.
+    * Reliability
+      * The timely delivery of emails depends on the reliability of the third-party email service we will use.
+ 
 * Use Cases- Use Case Diagram- Sagar  
   ![Use Case Diagram](https://github.com/ooad-sv/semester-project-design/blob/main/diagrams/use-case/diagram.png)
 * Activity or State Diagram- Activity- Vimal- Registration
